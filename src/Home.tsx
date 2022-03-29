@@ -37,7 +37,7 @@ const WalletAmount = styled.div`
   min-width: 48px;
   min-height: auto;
   border-radius: 22px;
-  background-color: var(--main-text-color);
+  background-color: #fcf4d2;
   box-shadow: 0px 3px 5px -1px rgb(0 0 0 / 20%), 0px 6px 10px 0px rgb(0 0 0 / 14%), 0px 1px 18px 0px rgb(0 0 0 / 12%);
   box-sizing: border-box;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
@@ -75,6 +75,7 @@ const NFT = styled(Paper)`
   flex: 1 1 auto;
   background-color: var(--card-background-color) !important;
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22) !important;
+  color: #464646;
 `;
 
 const Des = styled(NFT)`
@@ -96,11 +97,12 @@ const Card = styled(Paper)`
 
 const MintButtonContainer = styled.div`
   button.MuiButton-contained:not(.MuiButton-containedPrimary).Mui-disabled {
-    color: #464646;
-  }
+    color: #fcf4d2;
+  },
 
   button.MuiButton-contained:not(.MuiButton-containedPrimary):hover,
   button.MuiButton-contained:not(.MuiButton-containedPrimary):focus {
+    color: #fcf4d2;
     -webkit-animation: pulse 1s;
     animation: pulse 1s;
     box-shadow: 0 0 0 2em rgba(255, 255, 255, 0);
@@ -121,7 +123,6 @@ const MintButtonContainer = styled.div`
 
 const Logo = styled.div`
   flex: 0 0 auto;
-
   img {
     height: 60px;
   }
@@ -192,6 +193,7 @@ const MintContainer = styled.div`
   flex: 1 1 auto;
   flex-wrap: wrap;
   gap: 20px;
+  color: var(--title-text-color);
 `;
 
 const DesContainer = styled.div`
@@ -199,6 +201,7 @@ const DesContainer = styled.div`
   flex-direction: column;
   flex: 1 1 auto;
   gap: 20px;
+  color: var(--title-text-color);
 `;
 
 const Price = styled(Chip)`
@@ -222,10 +225,10 @@ const BorderLinearProgress = styled(LinearProgress)`
   border-radius: 30px;
   border: 2px solid white;
   box-shadow: 5px 5px 40px 5px rgba(0,0,0,0.5);
-  background-color:var(--main-text-color) !important;
+  background-color: #ebba34 !important;
   
   > div.MuiLinearProgress-barColorPrimary{
-    background-color:var(--title-text-color) !important;
+    background-color: #ebe134 !important;
   }
 
   > div.MuiLinearProgress-bar1Determinate {
@@ -238,7 +241,7 @@ const ShimmerTitle = styled.h1`
   margin: 20px auto;
   text-transform: uppercase;
   animation: glow 2s ease-in-out infinite alternate;
-  color: var(--main-text-color);
+  color: #fbf3df;
   @keyframes glow {
     from {
       text-shadow: 0 0 20px var(--main-text-color);
@@ -428,7 +431,7 @@ const Home = (props: HomeProps) => {
         }
         label += (minutes+1) + " minutes left to MINT."
         return (
-            <div><h3>{label}</h3></div>
+            <div><h1>{label}</h1></div>
         );
     };
 
@@ -549,15 +552,15 @@ const Home = (props: HomeProps) => {
         <main>
             <MainContainer>
                 <WalletContainer>
-                    <Logo><a href="http://localhost:3000/" target="_blank" rel="noopener noreferrer"><img alt=""
+                    <Logo><a href="https://womenofsubstancenft.com/" target="_blank" rel="noopener noreferrer"><img alt=""
                                                                                                           src="logo.png"/></a></Logo>
                     <Menu>
-                        <li><a href="http://localhost:3000/" target="_blank" rel="noopener noreferrer">Menu 1</a>
+                        <li><a href="https://womenofsubstancenft.com/" target="_blank" rel="noopener noreferrer">Home</a>
                         </li>
-                        <li><a href="http://localhost:3000/" target="_blank"
-                               rel="noopener noreferrer">Menu 2</a></li>
-                        <li><a href="http://localhost:3000/" target="_blank"
-                               rel="noopener noreferrer">Menu 3</a></li>
+                        <li><a href="https://discord.com/invite/3PTTvp8ERM" target="_blank"
+                               rel="noopener noreferrer">Discord</a></li>
+                        <li><a href="https://twitter.com/WomenofSubs_NFT" target="_blank"
+                               rel="noopener noreferrer">Twitter</a></li>
                     </Menu>
                     <Wallet>
                         {wallet ?
@@ -565,16 +568,18 @@ const Home = (props: HomeProps) => {
                             <ConnectButton>Connect Wallet</ConnectButton>}
                     </Wallet>
                 </WalletContainer>
-                <ShimmerTitle>MINT IS LIVE !</ShimmerTitle>
+                <ShimmerTitle>Pre-Sale is now live!</ShimmerTitle>
                 <br/>
                 <MintContainer>
                     <DesContainer>
                         <NFT elevation={3}>
-                            <h2>My NFT</h2>
+                        <br/>
+                        <h1><img src="WOMENofSUBSTANCE.png" alt=""></img></h1>
+                        
                             <br/>
                             <div><Price
                                 label={isActive && whitelistEnabled && (whitelistTokenBalance > 0) ? (whitelistPrice + " " + priceLabel) : (price + " " + priceLabel)}/><Image
-                                src="cool-cats.gif"
+                                src="SubstantialWomen30.gif"
                                 alt="NFT To Mint"/></div>
                             <br/>
                             {wallet && isActive && whitelistEnabled && (whitelistTokenBalance > 0) && isBurnToken &&
@@ -658,31 +663,22 @@ const Home = (props: HomeProps) => {
                     </DesContainer>
                     <DesContainer>
                         <Des elevation={2}>
-                            <LogoAligner><img src="logo.png" alt=""></img><GoldTitle>TITLE 1</GoldTitle></LogoAligner>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt.</p>
+                            <LogoAligner><img src="1.png" alt=""></img><GoldTitle>Pre-Sale</GoldTitle></LogoAligner>
+                            <p>Whitelist invitees are able to mint their NFTs at a reduced price until the main launch.</p>
+                            <p>Be sure that you are connecting with the wallet that you have submitted to us.</p>
+                            <p>If you would like to mint more than one NFT, just click the mint button again.</p>
                         </Des>
                         <Des elevation={2}>
-                            <LogoAligner><img src="logo.png" alt=""></img><GoldTitle>TITLE 2</GoldTitle></LogoAligner>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt.</p>
+                            <LogoAligner><img src="2.png" alt=""></img><GoldTitle>Main Launch</GoldTitle></LogoAligner>
+                            <p>Connect your Phantom wallet to mint an NFT for 2 SOL.</p>
+                            <p>Our suggested marketplace will be announced after the reveal.</p>
+                            <p>If you are minting prior to the reveal, your NFT will look similar to the animation on this website.</p>
                         </Des>
                         <Des elevation={2}>
-                            <LogoAligner><img src="logo.png" alt=""></img><GoldTitle>TITLE 3</GoldTitle></LogoAligner>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt.</p>
+                            <LogoAligner><img src="3.png" alt=""></img><GoldTitle>Reveal</GoldTitle></LogoAligner>
+                            <p>Once the reveal begins, your NFT will magically transform.</p>
+                            <p>Each NFT will be composed of several unique traits, which you can filter by rarity.</p>
+                            <p>Thank you for supporting Women of Substance!</p>
                         </Des>
                     </DesContainer>
                 </MintContainer>
